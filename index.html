@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kyo的歌单～</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header__title" data-i18n="title">Tracklist Search</h1>
+      <div class="header__actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span id="langLabel">日本語</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-toggle__icon" id="themeIcon">☀</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input
+        type="text"
+        class="search-bar__input"
+        id="searchInput"
+        data-i18n-placeholder="searchPlaceholder"
+        placeholder="歌名 / アーティスト名で検索..."
+        autocomplete="off"
+      >
+      <span class="search-bar__icon">🔍</span>
+    </div>
+
+    <!-- Filters -->
+    <section class="filters" id="filters">
+      <div class="filters__header">
+        <h2 class="filters__title" data-i18n="filters">フィルター</h2>
+        <button class="filters__reset" id="resetFilters" data-i18n="reset">リセット</button>
+      </div>
+
+      <!-- Language -->
+      <div class="filter-group">
+        <h3 class="filter-group__label" data-i18n="languageLabel">言語</h3>
+        <div class="filter-chips" id="languageFilters" data-filter="language"></div>
+      </div>
+
+      <!-- Category -->
+      <div class="filter-group">
+        <h3 class="filter-group__label" data-i18n="categoryLabel">カテゴリ</h3>
+        <div class="filter-chips" id="categoryFilters" data-filter="category"></div>
+      </div>
+
+      <!-- Tags -->
+      <div class="filter-group">
+        <h3 class="filter-group__label" data-i18n="tagLabel">タグ</h3>
+        <div class="filter-chips" id="tagFilters" data-filter="tag"></div>
+      </div>
+
+      <!-- Artist -->
+      <div class="filter-group">
+        <h3 class="filter-group__label" data-i18n="artistLabel">アーティスト</h3>
+        <select class="filter-select" id="artistFilter">
+          <option value="" data-i18n="all">すべて</option>
+        </select>
+      </div>
+
+      <!-- Recommended only -->
+      <div class="filter-group">
+        <label class="filter-checkbox">
+          <input type="checkbox" id="recommendedOnly">
+          <span data-i18n="recommendedOnly">おすすめのみ</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Stats & Sort -->
+    <div class="toolbar">
+      <div class="stats" id="stats">
+        <span id="resultCount">0</span> <span data-i18n="countUnit">件</span>
+      </div>
+      <div class="sort-controls">
+        <label data-i18n="sortBy">並び替え:</label>
+        <select id="sortBy">
+          <option value="title" data-i18n="sortTitle">歌名順</option>
+          <option value="artist" data-i18n="sortArtist">アーティスト順</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Song List -->
+    <div class="song-list" id="songList"></div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <p data-i18n="emptyTitle">該当する曲が見つかりません</p>
+      <p class="empty-state__hint" data-i18n="emptyHint">検索条件を変更してみてください</p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
